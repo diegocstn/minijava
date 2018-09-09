@@ -1,0 +1,7 @@
+class Simple {
+    int number;
+    boolean flag;
+
+    public int magicNumber() {}
+    private boolean checkThatNumber(int x) {}
+}

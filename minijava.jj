@@ -1,0 +1,63 @@
+PARSER_BEGIN(MiniJavaLexer)
+package com.diegocostantino.minijava.lexer;
+public class MiniJavaLexer {
+}
+PARSER_END(MiniJavaLexer)
+
+SKIP : {
+     " "
+   | "\t"
+   | "\n"
+   | "\r"
+   | <"//" (~["\n"])* "\n"> 
+}
+
+TOKEN : {
+        < LPAREN: "(" >
+      | < RPAREN: ")" >
+      | < LBRACE: "{" >
+      | < RBRACE: "}" >
+      | < LSQPAREN: "[" >
+      | < RSQPAREN: "]" >
+      | < COMMA: "," >
+      | < SEMICOLON: ";" >
+      | < DOT: "." >
+      | < PLUS: "+" >
+      | < MINUS: "-" >
+      | < STAR: "*" >
+      | < DIV: "/" >
+      | < BANG: "!" >
+      | < LT: "<" >
+      | < GT: ">" >
+      | < AND: "&&" >
+      | < ASSIGN: "=" >
+      | < EQ_EQ: "==" >
+      | < CLASS: "class" >
+      | < STATIC: "static" >
+      | < VOID: "void" >
+      | < THIS: "this" >
+      | < TRUE: "true" >
+      | < FALSE: "false" >
+      | < IF: "if" >
+      | < ELSE: "else" >
+      | < WHILE: "while" >
+      | < NEW: "new" >
+      | < RET: "return" >
+      | < T_INT: "int" >
+      | < T_BOOLEAN: "boolean" >
+      | < PRINT: "System.out.println" >
+      | < EXTENDS: "extends" >
+      | < PUBLIC: "public" >
+      | < PRIVATE: "private" >
+      | < MAIN: "public static void main(String[] args)" >
+}
+
+TOKEN : {
+        < #DIGIT: ["0"-"9"] >
+      | < #LETTER: ["A"-"z"] >
+      | < INTEGER_LITERAL: (["1"-"9"] (<DIGIT>)* | "0") >
+      | < IDENTIFIER: (<LETTER> (<LETTER> | <DIGIT>)*) >
+}
+
+
+

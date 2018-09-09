@@ -1,0 +1,4 @@
+class Simple {
+    int number;
+    boolean flag;
+}

@@ -1,0 +1,3 @@
+class Simple {
+    public int magicNumber() {}
+}

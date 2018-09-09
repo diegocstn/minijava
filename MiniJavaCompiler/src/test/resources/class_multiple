@@ -1,0 +1,8 @@
+class Cat {
+    int number;
+    boolean flag;
+}
+
+class Dog {
+    boolean isCute;
+}
