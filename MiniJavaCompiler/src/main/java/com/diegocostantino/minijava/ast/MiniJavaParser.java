@@ -15,6 +15,16 @@ public class MiniJavaParser {
 
     private int currentTokenIndex;
 
+    private final ASTTokenUnion TYPES = ASTTokenUnion.of(
+            MiniJavaLexerTokenManager.T_INT,
+            MiniJavaLexerTokenManager.T_BOOLEAN,
+            MiniJavaLexerTokenManager.T_INT_ARRAY);
+
+    private final ASTTokenUnion ACC_MODIFIERS = ASTTokenUnion.of(
+            MiniJavaLexerTokenManager.PRIVATE,
+            MiniJavaLexerTokenManager.PUBLIC
+    );
+
     public MiniJavaParser(String program) {
         this(new ByteArrayInputStream(program.getBytes()));
     }
@@ -85,7 +95,7 @@ public class MiniJavaParser {
 
         checkAndReport(typeToken,
                 isIdentifierType(typeToken),
-                ASTTokenUnion.of(MiniJavaLexerTokenManager.T_INT, MiniJavaLexerTokenManager.T_BOOLEAN));
+                TYPES);
 
         checkAndReport(idToken, MiniJavaLexerTokenManager.IDENTIFIER);
 
@@ -125,7 +135,7 @@ public class MiniJavaParser {
         Token idToken = advance();
 
         checkAndReport(idToken, MiniJavaLexerTokenManager.IDENTIFIER);
-        checkAndReport(typeToken, ASTTokenUnion.of(MiniJavaLexerTokenManager.T_INT, MiniJavaLexerTokenManager.T_BOOLEAN));
+        checkAndReport(typeToken, TYPES);
 
         prevs.add(new ASTFormalRest(
                 ASTIdentifierType.fromToken(typeToken),
@@ -158,9 +168,9 @@ public class MiniJavaParser {
 
         checkAndReport(accModifier,
                 isAccessModifier(accModifier),
-                ASTTokenUnion.of(MiniJavaLexerTokenManager.PUBLIC, MiniJavaLexerTokenManager.PRIVATE));
+                ACC_MODIFIERS);
 
-        checkAndReport(typeToken, ASTTokenUnion.of(MiniJavaLexerTokenManager.T_INT, MiniJavaLexerTokenManager.T_BOOLEAN));
+        checkAndReport(typeToken, TYPES);
 
         checkAndReport(idToken, MiniJavaLexerTokenManager.IDENTIFIER);
 
@@ -196,8 +206,7 @@ public class MiniJavaParser {
      * Helpers
      */
     private boolean isIdentifierType(Token token) {
-        return token.kind == MiniJavaLexerTokenManager.T_INT ||
-                token.kind == MiniJavaLexerTokenManager.T_BOOLEAN;
+        return TYPES.contains(token.kind);
     }
 
     private boolean isAccessModifier(Token token) {

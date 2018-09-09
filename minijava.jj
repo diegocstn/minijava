@@ -57,6 +57,7 @@ TOKEN : {
       | < #LETTER: ["A"-"z"] >
       | < INTEGER_LITERAL: (["1"-"9"] (<DIGIT>)* | "0") >
       | < IDENTIFIER: (<LETTER> (<LETTER> | <DIGIT>)*) >
+      | < T_INT_ARRAY: <T_INT><LSQPAREN><RSQPAREN> >
 }
 
 

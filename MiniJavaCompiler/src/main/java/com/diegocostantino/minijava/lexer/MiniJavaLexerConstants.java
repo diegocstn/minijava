@@ -92,6 +92,8 @@ public interface MiniJavaLexerConstants {
   int INTEGER_LITERAL = 45;
   /** RegularExpression Id. */
   int IDENTIFIER = 46;
+  /** RegularExpression Id. */
+  int T_INT_ARRAY = 47;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -145,6 +147,7 @@ public interface MiniJavaLexerConstants {
     "<LETTER>",
     "<INTEGER_LITERAL>",
     "<IDENTIFIER>",
+    "<T_INT_ARRAY>",
   };
 
 }
