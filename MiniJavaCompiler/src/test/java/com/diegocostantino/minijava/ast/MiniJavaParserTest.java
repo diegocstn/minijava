@@ -121,6 +121,11 @@ public class MiniJavaParserTest {
                                                 new ASTIdentifier("magicNumber"),
                                                 new ASTFormalList(
                                                         List.of()
+                                                ),
+                                                List.of(
+                                                        new ASTVarDeclaration(
+                                                                ASTIdentifierType.INT,
+                                                                new ASTIdentifier("guess"))
                                                 )),
                                         new ASTMethodDecl(
                                                 ASTAccessModifier.PRIVATE,
@@ -132,7 +137,9 @@ public class MiniJavaParserTest {
                                                                         ASTIdentifierType.INT,
                                                                         new ASTIdentifier("x"))
                                                         )
-                                                ))
+                                                ),
+                                                List.of()
+                                                )
                                 ))
                         )
                 ))
@@ -156,7 +163,16 @@ public class MiniJavaParserTest {
                                                 new ASTIdentifier("magicNumber"),
                                                 new ASTFormalList(
                                                         List.of()
-                                                ))
+                                                ),
+                                                List.of(
+                                                        new ASTVarDeclaration(
+                                                                ASTIdentifierType.INT,
+                                                                new ASTIdentifier("guess")),
+
+                                                        new ASTVarDeclaration(
+                                                                ASTIdentifierType.ARRAY_INT,
+                                                                new ASTIdentifier("guesses")))
+                                                )
                                 ))
                         )
                 ))

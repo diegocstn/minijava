@@ -159,8 +159,30 @@ public class MiniJavaParser {
         return new ASTFormalList(params);
     }
 
+    private void parseMethodLocalsVar(List<ASTVarDeclaration> vars) throws ASTParserException {
+        // no local vars
+        if (!TYPES.contains(peek().kind)) {
+            return;
+        }
+
+        Token typeToken = advance();
+        Token idToken = advance();
+
+        checkAndReport(typeToken, TYPES);
+        checkAndReport(idToken, MiniJavaLexerTokenManager.IDENTIFIER);
+        checkAndReport(advance(), MiniJavaLexerTokenManager.SEMICOLON);
+
+        vars.add(new ASTVarDeclaration(
+                ASTIdentifierType.fromToken(typeToken),
+                new ASTIdentifier(idToken.image)));
+
+        if (isIdentifierType(peek())) {
+            parseMethodLocalsVar(vars);
+        }
+    }
+
     private ASTMethodDecl parseMethodDecl() throws ASTParserException {
-        List<ASTFormalRest> params;
+        List<ASTVarDeclaration> localVars = new ArrayList<>();
 
         Token accModifier = advance();
         Token typeToken = advance();
@@ -171,7 +193,6 @@ public class MiniJavaParser {
                 ACC_MODIFIERS);
 
         checkAndReport(typeToken, TYPES);
-
         checkAndReport(idToken, MiniJavaLexerTokenManager.IDENTIFIER);
 
         // parse formal params
@@ -181,6 +202,7 @@ public class MiniJavaParser {
         checkAndReport(advance(), MiniJavaLexerTokenManager.LBRACE);
 
         // TODO parse method body
+        parseMethodLocalsVar(localVars);
 
         // check and consume right brace
         checkAndReport(advance(), MiniJavaLexerTokenManager.RBRACE);
@@ -189,7 +211,8 @@ public class MiniJavaParser {
                 ASTAccessModifier.fromToken(accModifier),
                 ASTIdentifierType.fromToken(typeToken),
                 new ASTIdentifier(idToken.image),
-                formalList
+                formalList,
+                localVars
         );
     }
 

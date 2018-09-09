@@ -71,29 +71,29 @@ public interface MiniJavaLexerConstants {
   /** RegularExpression Id. */
   int RET = 35;
   /** RegularExpression Id. */
-  int T_INT = 36;
+  int T_INT_ARRAY = 36;
   /** RegularExpression Id. */
-  int T_BOOLEAN = 37;
+  int T_INT = 37;
   /** RegularExpression Id. */
-  int PRINT = 38;
+  int T_BOOLEAN = 38;
   /** RegularExpression Id. */
-  int EXTENDS = 39;
+  int PRINT = 39;
   /** RegularExpression Id. */
-  int PUBLIC = 40;
+  int EXTENDS = 40;
   /** RegularExpression Id. */
-  int PRIVATE = 41;
+  int PUBLIC = 41;
   /** RegularExpression Id. */
-  int MAIN = 42;
+  int PRIVATE = 42;
   /** RegularExpression Id. */
-  int DIGIT = 43;
+  int MAIN = 43;
   /** RegularExpression Id. */
-  int LETTER = 44;
+  int DIGIT = 44;
   /** RegularExpression Id. */
-  int INTEGER_LITERAL = 45;
+  int LETTER = 45;
   /** RegularExpression Id. */
-  int IDENTIFIER = 46;
+  int INTEGER_LITERAL = 46;
   /** RegularExpression Id. */
-  int T_INT_ARRAY = 47;
+  int IDENTIFIER = 47;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -136,6 +136,7 @@ public interface MiniJavaLexerConstants {
     "\"while\"",
     "\"new\"",
     "\"return\"",
+    "\"int[]\"",
     "\"int\"",
     "\"boolean\"",
     "\"System.out.println\"",
@@ -147,7 +148,6 @@ public interface MiniJavaLexerConstants {
     "<LETTER>",
     "<INTEGER_LITERAL>",
     "<IDENTIFIER>",
-    "<T_INT_ARRAY>",
   };
 
 }

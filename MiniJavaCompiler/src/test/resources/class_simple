@@ -2,6 +2,8 @@ class Simple {
     int number;
     boolean flag;
 
-    public int magicNumber() {}
+    public int magicNumber() {
+        int guess;
+    }
     private boolean checkThatNumber(int x) {}
 }

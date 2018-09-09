@@ -43,6 +43,7 @@ TOKEN : {
       | < WHILE: "while" >
       | < NEW: "new" >
       | < RET: "return" >
+      | < T_INT_ARRAY: "int[]" >
       | < T_INT: "int" >
       | < T_BOOLEAN: "boolean" >
       | < PRINT: "System.out.println" >
@@ -57,7 +58,6 @@ TOKEN : {
       | < #LETTER: ["A"-"z"] >
       | < INTEGER_LITERAL: (["1"-"9"] (<DIGIT>)* | "0") >
       | < IDENTIFIER: (<LETTER> (<LETTER> | <DIGIT>)*) >
-      | < T_INT_ARRAY: <T_INT><LSQPAREN><RSQPAREN> >
 }
 
 
