@@ -43,6 +43,7 @@ TOKEN : {
       | < WHILE: "while" >
       | < NEW: "new" >
       | < RET: "return" >
+      | < ARRAY_LENGTH: "length" >
       | < T_INT_ARRAY: "int[]" >
       | < T_INT: "int" >
       | < T_BOOLEAN: "boolean" >

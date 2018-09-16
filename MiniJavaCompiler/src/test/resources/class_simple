@@ -4,6 +4,7 @@ class Simple {
 
     public int magicNumber() {
         int guess;
+        guess = 3;
     }
     private boolean checkThatNumber(int x) {}
 }
